@@ -8,49 +8,68 @@ import {
 } from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../App';
+import tw from 'twrnc';
 
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 const Home = ({navigation}: HomeProps) => {
   return (
     <>
-      <View style={styles.Header}>
-        <Text style={[styles.Heading]}>Vitalize Me</Text>
+      <View style={tw`bg-[#00712D] py-2`}>
+        <Text style={tw`text-center font-bold text-white text-3xl`}>
+          Vitalize Me
+        </Text>
       </View>
       <View style={styles.banner}>
         <ImageBackground
-          source={require('../assets/background.png')}
-          style={[styles.welcome]}
+          source={require('../assets/background.jpg')}
+          style={tw`flex-1 items-center justify-center`}
           resizeMode="cover">
-          <Text style={styles.Heading}>
-            Welcome {'\n'} Fitness {'\n'} Freak
+          <Text
+            style={[
+              styles.bg_opacity,
+              tw`text-center font-bold text-white text-3xl p-2 rounded-2`,
+            ]}>
+            Welcome {'\n'} Fitness Freak
           </Text>
         </ImageBackground>
       </View>
-      <View style={styles.actionArea}>
+      <View style={tw`bg-[#D5ED9F] h-full py-15 items-center gap-10`}>
         <TouchableOpacity
           onPress={() => {
             navigation.push('Steps');
           }}>
-          <View style={[styles.TilesArea]}>
+          <View style={tw`h-[200px]`}>
             <ImageBackground
               source={require('../assets/steps.png')}
-              style={[styles.actionCard, styles.Steps]}
+              style={tw`h-[160px] aspect-square bg-red-600 rounded-t-lg`}
               resizeMode="cover"
             />
-            <Text style={styles.cardInfo}>Steps</Text>
+            <Text
+              style={[
+                styles.bg_opacity,
+                tw`text-white text-xl text-center font-bold`,
+              ]}>
+              Steps
+            </Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             navigation.push('More');
           }}>
-          <View style={[styles.TilesArea]}>
+          <View style={tw`h-[200px]`}>
             <ImageBackground
               source={require('../assets/more.png')}
-              style={[styles.actionCard, styles.more]}
+              style={tw`h-[160px] aspect-square bg-green-600 rounded-t-lg`}
             />
-            <Text style={styles.cardInfo}>More Activites</Text>
+            <Text
+              style={[
+                styles.bg_opacity,
+                tw`text-white text-xl text-center font-bold`,
+              ]}>
+              More Activites
+            </Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -60,7 +79,7 @@ const Home = ({navigation}: HomeProps) => {
 
 const styles = StyleSheet.create({
   Header: {
-    backgroundColor: '#f35469',
+    backgroundColor: '#00712D',
   },
   banner: {
     height: 200,
@@ -79,29 +98,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  heroText: {
-    fontSize: 30,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    color: '#ffffff',
+  bg_opacity: {
+    backgroundColor: 'rgba(0,0,0,0.6)',
   },
   actionArea: {
-    flex: 1,
-    flexDirection: 'row',
+    gap: 20,
     alignItems: 'center',
-    justifyContent: 'space-around',
     paddingVertical: 100,
-    backgroundColor: 'white',
+    backgroundColor: '#D5ED9F',
   },
   TilesArea: {
-    gap: 20,
     height: 200,
   },
   actionCard: {
     height: 150,
     flex: 1,
     aspectRatio: 1,
-    borderRadius: 10,
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
   },
   Steps: {
     backgroundColor: 'red',
@@ -116,13 +130,12 @@ const styles = StyleSheet.create({
   },
   cardInfo: {
     textAlign: 'center',
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
-    color: 'black',
-  },
-  footer: {
-    backgroundColor: 'black',
-    height: 45,
+    color: 'white',
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
   },
 });
 

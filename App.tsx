@@ -15,13 +15,14 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function App(): React.JSX.Element {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={() => ({
-          headerShown: false,
-        })}
-        >
-        <Stack.Screen name='Home' component={Home} />
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={() => ({
+            headerShown: false,
+          })}
+        />
         <Stack.Screen name="Steps" component={Steps} />
         <Stack.Screen name="More" component={More} />
       </Stack.Navigator>
